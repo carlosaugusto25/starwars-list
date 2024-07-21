@@ -16,7 +16,9 @@ export function Nav() {
 
     return (
         <nav className="w-full bg-sky-700 h-20 flex justify-between items-center px-10">
-            <p className="text-3xl font-bold">HUBBI</p>
+            <a href="/">
+                <p className="text-3xl font-bold">HUBBI</p>
+            </a>
             {
                 !user ?
                 <button onClick={() => navigation('/login')} className="w-32 bg-blue-950 font-bold text-xl rounded-md p-2 flex flex-row items-center justify-center gap-2">Entrar <FaDoorOpen /></button>

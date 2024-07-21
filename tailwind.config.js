@@ -8,6 +8,9 @@ export default {
     extend: {
       fontFamily: {
         sans: 'Inter'
+      },
+      backgroundImage: {
+        'darthwader': "url('/src/assets/darthvader.jpg')",
       }
     },
   },

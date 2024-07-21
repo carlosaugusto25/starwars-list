@@ -12,7 +12,7 @@ export function CardPerson({ name, details, idStarchips, detailsPerson, idPerson
     const navigate = useNavigate()
     const { user } = useAuth()
     return (
-        <div className="w-full flex flex-row items-center justify-between bg-indigo-50/10 rounded-md p-6">
+        <div className="w-full flex flex-row items-center justify-between bg-indigo-50/35 rounded-md p-6">
             <div>
                 <p className="text-xl">Nome:</p>
                 <p className="font-bold text-5xl">{name}</p>

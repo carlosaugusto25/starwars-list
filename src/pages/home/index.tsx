@@ -5,30 +5,36 @@ import { CardPerson } from "../../components/CardPerson";
 import { Nav } from "../../components/Nav";
 import { Header } from "../../components/Header";
 import { FaRocket, FaUserAstronaut } from "react-icons/fa6";
+import { Loading } from "../../components/Loading";
 
 export function Home() {
 
     const [person, setPerson] = useState<PersonProps[]>([]);
     const [starchips, setStarchips] = useState<StarChipsProps[]>([]);
 
+    const [loadingPerson, setLoadingPerson] = useState(true);
+    const [loadingStarChips, setLoadingStarChips] = useState(true);
+
     const [list, setList] = useState('persons')
 
     const loadPerson = useCallback(() => {
+        setLoadingPerson(true)
         api.get('/people').then(res => {
             setPerson(res.data.results)
         }).catch(err => {
             console.log(err);
             alert('Não foi possível carregar listagem de Personagens');
-        }).finally(() => { })
+        }).finally(() => setLoadingPerson(false))
     }, [])
 
     const loadStarChips = useCallback(() => {
+        setLoadingStarChips(true)
         api.get('/starships').then(res => {
             setStarchips(res.data.results)
         }).catch(err => {
             console.log(err);
             alert('Não foi possível carregar listagem de Naves');
-        }).finally(() => { })
+        }).finally(() => setLoadingStarChips(false))
     }, [])
 
     useEffect(() => {
@@ -49,19 +55,35 @@ export function Home() {
             </div>
             {
                 list === 'persons' ?
-                    <section className="flex flex-col mx-auto items-center justify-center mt-10 w-1/2 gap-4 pb-16">
-                        <h2 className="text-4xl font-bold uppercase">Personagens</h2>
-                        {person?.map((item, index) => (
-                            <CardPerson key={index} name={item.name} detailsPerson idPerson={item.url.split('/')[5]} />
-                        ))}
-                    </section>
+                    <>
+                        {
+                            loadingPerson ?
+                                <Loading />
+                                :
+                                <section className="flex flex-col mx-auto items-center justify-center mt-10 w-1/2 gap-4 pb-16">
+                                    <h2 className="text-4xl font-bold uppercase">Personagens</h2>
+                                    {person?.map((item, index) => (
+                                        <CardPerson key={index} name={item.name} detailsPerson idPerson={item.url.split('/')[5]} />
+                                    ))}
+                                </section>
+
+                        }
+                    </>
                     :
-                    <section className="flex flex-col mx-auto items-center justify-center mt-10 w-1/2 gap-4 pb-16">
-                        <h2 className="text-4xl font-bold uppercase">Naves</h2>
-                        {starchips?.map((item, index) => (
-                            <CardPerson key={index} name={item.name} details idStarchips={item.url.split('/')[5]} />
-                        ))}
-                    </section>
+                    <>
+                        {
+                            loadingStarChips ?
+                                <Loading />
+                                :
+                                <section className="flex flex-col mx-auto items-center justify-center mt-10 w-1/2 gap-4 pb-16">
+                                    <h2 className="text-4xl font-bold uppercase">Naves</h2>
+                                    {starchips?.map((item, index) => (
+                                        <CardPerson key={index} name={item.name} details idStarchips={item.url.split('/')[5]} />
+                                    ))}
+                                </section>
+                        }
+                    </>
+
             }
         </>
     )
