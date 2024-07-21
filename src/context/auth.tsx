@@ -5,10 +5,7 @@ interface User {
     email: string;
 }
 
-interface SignInCredentials {
-    email: string;
-    password?: string;
-}
+
 
 interface AuthState {
     token: string;
@@ -17,7 +14,7 @@ interface AuthState {
 
 interface AuthContextProps {
     user: User;
-    signIn: (credentials: SignInCredentials) => void;
+    signIn: (email:string, password: string) => boolean;
     signOut: () => void;
 
 }
@@ -38,11 +35,17 @@ const AuthProvider = ({children}:any) => {
         return {} as AuthState
     })
 
-    const signIn = ({email}: SignInCredentials) => {
+    const signIn = (email:string, password: string) => {
+
+        if(email !== 'teste@hubbi.com' && password !== '123456') {
+            alert('E-mail ou senha incorretos. Tente novamente');
+            return false
+        }
+
         const token = 'ndfaklsdy7t8a7weor8tayhlonrta78ablauif7y8g6a';
 
         const user ={
-            name: 'Usuário',
+            name: 'Usuário Teste',
             email
         }
         
@@ -50,6 +53,7 @@ const AuthProvider = ({children}:any) => {
         localStorage.setItem('@hubbi:user', JSON.stringify(user));
 
         setData({token, user});
+        return true
     }
 
     const signOut = () => {

@@ -1,10 +1,9 @@
 import { createBrowserRouter, Navigate, RouterProvider, useLocation } from 'react-router-dom'
 import { Home } from './pages/home'
 import { StarchipsDetails } from './pages/starchips-details'
-import { Nav } from './components/Nav'
-import { Header } from './components/Header'
 import { AuthProvider, useAuth } from './context/auth'
 import { Login } from './pages/login'
+import { PersonDetails } from './pages/personDetails'
 
 
 function RequireAuth({ children }: { children: JSX.Element }) {
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/person/:id',
-    element: <RequireAuth><StarchipsDetails /></RequireAuth>
+    element: <RequireAuth><PersonDetails /></RequireAuth>
   },
   {
     path: '/login',
@@ -37,12 +36,8 @@ const router = createBrowserRouter([
 ])
 export function App() {
   return (
-    <>
       <AuthProvider>
-      <Nav />
-      <Header />
         <RouterProvider router={router} />
       </AuthProvider>
-    </>
   )
 }
