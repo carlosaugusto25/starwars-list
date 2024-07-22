@@ -15,7 +15,7 @@ export function Nav() {
     }
 
     return (
-        <nav className="w-full bg-sky-700 h-20 flex justify-between items-center px-10">
+        <nav className="w-full bg-sky-700 h-20 flex justify-between items-center px-10 max-[520px]:px-5">
             <a href="/">
                 <p className="text-3xl font-bold">HUBBI</p>
             </a>
@@ -25,7 +25,7 @@ export function Nav() {
                 :
                 <div className="flex flex-row gap-4 items-center">
                     <FaCircleUser size={36} />
-                    <p className="text-xl">Olá, <strong>{user.name}</strong></p>
+                    <p className="text-xl max-[520px]:hidden">Olá, <strong>{user.name}</strong></p>
                     <button className="w-32 bg-blue-950 font-bold text-xl rounded-md p-2 flex flex-row items-center justify-center gap-2" onClick={handleLogout}>Sair <FaArrowRightFromBracket /></button>
                 </div>
             }
