@@ -17,7 +17,7 @@ export function Nav() {
     return (
         <nav className="w-full bg-sky-700 h-20 flex justify-between items-center px-10 max-[520px]:px-5">
             <a href="/">
-                <p className="text-3xl font-bold">HUBBI</p>
+                <p className="text-3xl font-bold">CARLOS DEV</p>
             </a>
             {
                 !user ?

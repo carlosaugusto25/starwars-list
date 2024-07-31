@@ -37,7 +37,7 @@ const AuthProvider = ({children}:any) => {
 
     const signIn = (email:string, password: string) => {
 
-        if(email !== 'teste@hubbi.com' && password !== '123456') {
+        if(email !== 'teste@carlosdev.com' && password !== '123456') {
             alert('E-mail ou senha incorretos. Tente novamente');
             return false
         }

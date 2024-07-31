@@ -3,7 +3,7 @@ import { FaWhatsapp, FaRegEnvelope, FaLinkedin, FaGithub  } from "react-icons/fa
 export function Footer(){
     return(
         <footer className="w-full bg-sky-700 h-16 max-[520px]:h-auto max-[520px]:py-5 flex max-[520px]:flex-col max-[520px]:gap-2 justify-between items-center px-10 max-[520px]:px-5">
-            <p className="font-bold max-[520px]:text-sm">© 2024 - Developed by Carlos Augusto for Hubbi</p>
+            <p className="font-bold max-[520px]:text-sm">© 2024 - Developed by Carlos Augusto</p>
             <div className="flex items-center  gap-4">
                 <div className="flex flex-row items-center gap-2">
                     <FaWhatsapp size={26} />
