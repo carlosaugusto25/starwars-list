@@ -86,6 +86,8 @@ export function Home() {
         }
     }, [loadPerson, list, loadStarChips])
 
+    // funções de paginação
+
     const nextPagePerson = useCallback(() => {
         const page = localStorage.getItem('@pagePerson')
         if (Number(page) < totalPagesPerson) {
@@ -131,6 +133,8 @@ export function Home() {
             return alert('Esta é a primeira página')
         }
     }, [loadStarChips])
+
+    //funções do input de paginação
 
     const handleToPagePerson = useCallback(() => {
         if (pagePerson > 0 && pagePerson <= totalPagesPerson) {
